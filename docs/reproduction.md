@@ -10,11 +10,14 @@ Use Python 3.10 or newer in a virtual environment:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install -r requirements-repro.txt
+python -m pip install -e .
+python -m pytest
 ```
 
-The numerical metrics require NumPy. The optional YAML reader is not needed by
-the portable modules.
+`requirements-repro.txt` pins the NumPy and pytest versions used for the
+lightweight test run. The optional YAML reader is not needed by the portable
+modules.
 
 ## 2. Validate Records
 

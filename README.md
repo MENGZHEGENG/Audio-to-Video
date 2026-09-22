@@ -20,6 +20,18 @@ python -m a2v.data.split --input examples/tiny_records.jsonl --output outputs/sp
 python -m a2v.data.split_audit --records outputs/split_records.jsonl
 ```
 
+For the exact lightweight test environment used for this release, create a
+fresh virtual environment and install the pinned requirements before the
+editable package:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-repro.txt
+python -m pip install -e .
+python -m pytest
+```
+
 To compute the compact dataset checks used by the example:
 
 ```bash
