@@ -20,9 +20,9 @@ python -m a2v.data.split --input examples/tiny_records.jsonl --output outputs/sp
 python -m a2v.data.split_audit --records outputs/split_records.jsonl
 ```
 
-For the exact lightweight test environment used for this release, create a
-fresh virtual environment and install the pinned requirements before the
-editable package:
+For the exact lightweight test environment used for this release, use Python
+3.12 or newer, create a fresh virtual environment, and install the pinned
+requirements before the editable package:
 
 ```bash
 python -m venv .venv

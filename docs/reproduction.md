@@ -5,7 +5,7 @@ the toolkit. It does not require media for the record and split checks.
 
 ## 1. Install
 
-Use Python 3.10 or newer in a virtual environment:
+Use Python 3.12 or newer in a virtual environment:
 
 ```bash
 python -m venv .venv
