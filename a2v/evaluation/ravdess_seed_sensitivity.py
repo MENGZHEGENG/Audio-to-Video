@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import random
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -68,12 +69,14 @@ def _metrics_for_mode(model: Any, loader: Any, device: Any, *, zero_audio: bool)
     return {"mae": absolute / count, "mse": squared / count}
 
 
-def fit_one(spec: dict[str, Any], plan: dict[str, Any], *, seed: int, mode: str, dev: list[dict[str, Any]], val: list[dict[str, Any]], feature_root: Path, output_root: Path, device: Any) -> dict[str, Any]:
+def fit_one(spec: dict[str, Any], plan: dict[str, Any], *, seed: int, mode: str, dev: list[dict[str, Any]], val: list[dict[str, Any]], feature_root: Path, output_root: Path, device: Any, milestone_epoch: int | None = None) -> dict[str, Any]:
     import torch
     from torch.utils.data import DataLoader
 
     if seed not in plan["seeds"] or mode not in plan["conditions"]:
         raise ValueError("unplanned seed or mode")
+    if milestone_epoch is not None and not (1 <= milestone_epoch <= int(spec["fitting"]["maximum_epochs"])):
+        raise ValueError("milestone must fall within the training budget")
     zero = mode == "constant_zero_audio_fit"
     random.seed(seed)
     np.random.seed(seed)
@@ -85,6 +88,7 @@ def fit_one(spec: dict[str, Any], plan: dict[str, Any], *, seed: int, mode: str,
     val_loader = DataLoader(_RasterDataset(val, feature_root), batch_size=batch_size, shuffle=False, num_workers=2, pin_memory=device.type == "cuda")
     output_root.mkdir(parents=True, exist_ok=False)
     best, selected, stale, history = float("inf"), 0, 0, []
+    milestone = None
     for epoch in range(1, int(spec["fitting"]["maximum_epochs"]) + 1):
         model.train()
         for identity, audio, target in dev_loader:
@@ -103,9 +107,23 @@ def fit_one(spec: dict[str, Any], plan: dict[str, Any], *, seed: int, mode: str,
             os.replace(temporary, output_root / "checkpoint.pt")
         else:
             stale += 1
-            if stale >= 6:
-                break
+        if epoch == milestone_epoch:
+            milestone_path = output_root / f"checkpoint_at_epoch_{epoch}.pt"
+            shutil.copyfile(output_root / "checkpoint.pt", milestone_path)
+            milestone = {"epoch": epoch, "selected_epoch": selected, "checkpoint_sha256": _sha256(milestone_path), "validation_metrics": min(history, key=lambda row: row["mae"])}
+            os.chmod(milestone_path, 0o444)
+        if stale >= 6:
+            break
     report = {"status": "exploratory_seed_condition_fitted", "seed": seed, "mode": mode, "selected_epoch": selected, "validation_metrics": min(history, key=lambda row: row["mae"]), "history": history, "spec_sha256": _digest(spec), "plan_sha256": _digest(plan), "checkpoint_sha256": _sha256(output_root / "checkpoint.pt"), "development_records": len(dev), "validation_records": len(val)}
+    if milestone_epoch is not None:
+        if milestone is None:
+            milestone_path = output_root / f"checkpoint_at_epoch_{milestone_epoch}.pt"
+            shutil.copyfile(output_root / "checkpoint.pt", milestone_path)
+            milestone = {"epoch": len(history), "selected_epoch": selected, "checkpoint_sha256": _sha256(milestone_path), "validation_metrics": min(history, key=lambda row: row["mae"]), "stopped_before_milestone": True}
+            os.chmod(milestone_path, 0o444)
+        else:
+            milestone["stopped_before_milestone"] = False
+        report["milestone"] = milestone
     (output_root / "train_report.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
     os.chmod(output_root / "checkpoint.pt", 0o444)
     return report

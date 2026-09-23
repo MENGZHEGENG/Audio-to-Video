@@ -1,0 +1,147 @@
+{
+  "actor_groups": 4,
+  "excluded": [
+    "raw media",
+    "raw feature arrays",
+    "trained checkpoints",
+    "pair-level rows",
+    "execution metadata"
+  ],
+  "maximum_epochs": 80,
+  "milestone_epoch": 40,
+  "schema": "civic-ravdess-trajectory-receipt/v1",
+  "scope": "retrospective same-trajectory checkpoint-selection diagnostic on one previously opened fixed confirmation set; no new population or registered test",
+  "seed_results": [
+    {
+      "after_minus_before_mae": {
+        "aligned_audio_fit": -4.656612873077393e-11,
+        "constant_zero_audio_fit": -3.104408582051595e-11
+      },
+      "constant_minus_audio_delta": {
+        "at_cap": -0.002330776738623778,
+        "final": -0.0023307767231017353
+      },
+      "mean_mae": {
+        "aligned_audio_fit": {
+          "at_cap": 0.08872613951874277,
+          "final": 0.08872613947217663
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 0.08639536278011899,
+          "final": 0.0863953627490749
+        }
+      },
+      "seed": 1701,
+      "selected_epochs": {
+        "aligned_audio_fit": {
+          "at_cap": 22,
+          "final": 22
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 34,
+          "final": 34
+        }
+      },
+      "source_score_sha256": "7c273da1a614c03cad3fa07de5b60975873cce097e6e38733b5e9ac429f144d4"
+    },
+    {
+      "after_minus_before_mae": {
+        "aligned_audio_fit": 7.761021455128987e-11,
+        "constant_zero_audio_fit": 0.0
+      },
+      "constant_minus_audio_delta": {
+        "at_cap": -0.0032806352556993563,
+        "final": -0.003280635333309571
+      },
+      "mean_mae": {
+        "aligned_audio_fit": {
+          "at_cap": 0.09094768975240489,
+          "final": 0.0909476898300151
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 0.08766705449670553,
+          "final": 0.08766705449670553
+        }
+      },
+      "seed": 1702,
+      "selected_epochs": {
+        "aligned_audio_fit": {
+          "at_cap": 15,
+          "final": 15
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 29,
+          "final": 29
+        }
+      },
+      "source_score_sha256": "6215c94da9e1a28ff69d9091e5af5dbaa6bb8b1aeefa97489884ba8cec2d5c41"
+    },
+    {
+      "after_minus_before_mae": {
+        "aligned_audio_fit": -3.7252902984619143e-10,
+        "constant_zero_audio_fit": 1.7074247201283772e-10
+      },
+      "constant_minus_audio_delta": {
+        "at_cap": -0.002407413488253951,
+        "final": -0.0024074129449824493
+      },
+      "mean_mae": {
+        "aligned_audio_fit": {
+          "at_cap": 0.08995586809081337,
+          "final": 0.08995586771828433
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 0.0875484546025594,
+          "final": 0.08754845477330188
+        }
+      },
+      "seed": 1703,
+      "selected_epochs": {
+        "aligned_audio_fit": {
+          "at_cap": 19,
+          "final": 19
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 31,
+          "final": 31
+        }
+      },
+      "source_score_sha256": "7ec5382534f3411926c3d008a37c37f2333384e4bb0b7f0baeb588f4fbfc744e"
+    },
+    {
+      "after_minus_before_mae": {
+        "aligned_audio_fit": 9.313225746154786e-11,
+        "constant_zero_audio_fit": -0.0005998217655966679
+      },
+      "constant_minus_audio_delta": {
+        "at_cap": -0.002976814052090049,
+        "final": -0.0035766359108189744
+      },
+      "mean_mae": {
+        "aligned_audio_fit": {
+          "at_cap": 0.08895876918298502,
+          "final": 0.08895876927611729
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 0.08598195513089497,
+          "final": 0.0853821333652983
+        }
+      },
+      "seed": 1704,
+      "selected_epochs": {
+        "aligned_audio_fit": {
+          "at_cap": 24,
+          "final": 24
+        },
+        "constant_zero_audio_fit": {
+          "at_cap": 38,
+          "final": 48
+        }
+      },
+      "source_score_sha256": "8baa30017a3b171ce9350af13bc5937344bbab962fd41c5214072fc6280d32bd"
+    }
+  ],
+  "source": "RAVDESS speech-video",
+  "target_timestamp_seconds": 2.0,
+  "targets_per_seed": 240
+}

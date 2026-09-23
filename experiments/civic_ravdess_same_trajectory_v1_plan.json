@@ -1,0 +1,22 @@
+{
+  "status": "exploratory_same_trajectory_plan_frozen_before_execution",
+  "scope": "Post-confirmation same-trajectory checkpoint diagnostic on the registered 2.0-second RAVDESS raster target; no new registered gate.",
+  "question": "Within each fresh 80-epoch training trajectory, does validation selection after the old 40-epoch cap change the same-target confirmation MAE or the constant-minus-aligned ordering?",
+  "budget_plan_sha256": "b66f1312d520bf57be510f1457de1d280d4911d9b4fdf0a7ed93a3aa019bdf8a",
+  "seeds": [1701, 1702, 1703, 1704],
+  "conditions": ["aligned_audio_fit", "constant_zero_audio_fit"],
+  "milestone_epoch": 40,
+  "maximum_epochs": 80,
+  "patience": 6,
+  "inputs_sha256": {
+    "spec_json": "d585ed74b14e3c70772c185700a467d8f0103f20fe1d5504679acab9c079b135",
+    "features_json": "24b3e65ae8b3e292d376c3ef2ef68eca24887b0e865122cec06060de9955deb8",
+    "feature_gate_json": "7e4aa680d0448f2645caa64906fb71adbedb3ef15217b355a39aa28c3a6cf897",
+    "confirmation_json": "7a3f7f3769e4418ea18e864ab5766547c7e92131448352a1c4270f7e1854e81b"
+  },
+  "expected_development_records": 960,
+  "expected_validation_records": 240,
+  "expected_confirmation_pairs": 240,
+  "target_timestamp_seconds": 2.0,
+  "analysis": "For each seed and condition, retain the best validation checkpoint at or before epoch 40 from one continued 80-epoch trajectory and its final validation-selected checkpoint. Score both on the same 240 already-opened confirmation clips. Report per-seed and per-actor before/after differences, selected epochs, early stopping, and whether the cross-condition ordering changes. This isolates checkpoint selection within each trajectory, not the effect of retraining with a new random trajectory or a prospective population estimate."
+}

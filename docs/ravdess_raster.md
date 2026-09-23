@@ -3,7 +3,7 @@
 The `a2v/data`, `a2v/models`, `a2v/training`, and `a2v/evaluation` modules in
 this release contain the 64 × 64 raster preprocessing, AudioFiLM renderer,
 registered-control scoring, matched-stimulus controls, constant-audio fit, and
-matched-seed and training-budget sensitivity code. The four JSON files in `experiments/` retain
+matched-seed, training-budget, and same-trajectory sensitivity code. The five JSON files in `experiments/` retain
 the executed exploratory analysis settings and input digests.
 
 ## Lightweight numeric check
@@ -13,13 +13,16 @@ With the base environment from the README, run:
 ```bash
 python -m a2v.reporting.ravdess_seed_receipt docs/ravdess_seed_receipt.json
 python -m a2v.reporting.ravdess_budget_receipt docs/ravdess_budget_receipt.json
+python -m a2v.reporting.ravdess_trajectory_receipt docs/ravdess_trajectory_receipt.json
 python -m pytest tests/test_ravdess_seed_receipt.py
 python -m pytest tests/test_ravdess_budget_receipt.py
+python -m pytest tests/test_ravdess_trajectory_receipt.py
 ```
 
 The receipt commands recompute the four seed-level constant-minus-audio MAE
 differences for each maximum-epoch setting, their means and ranges, and the
-number with a negative difference.
+number with a negative difference. The same-trajectory receipt also checks
+the selected checkpoints and before/after scores on each continued fit.
 The receipt contains aggregate scores only. It does not contain the 240 scored
 pairs, model weights, video, audio, or feature arrays, so it cannot recompute
 the pair or actor bootstrap intervals.
@@ -45,6 +48,7 @@ and the target is the frame at 2.0 seconds. The executable entry points are:
 - `python -m a2v.evaluation.ravdess_constant_audio_comparator --help`
 - `python -m a2v.evaluation.ravdess_seed_sensitivity --help`
 - `python -m a2v.evaluation.ravdess_budget_sensitivity --help`
+- `python -m a2v.evaluation.ravdess_same_trajectory --help`
 
 The full scored run needs the hash-matching input JSON and feature arrays,
 which are not redistributed here. The original feature gate contains a
@@ -62,3 +66,11 @@ performance across a population of actors or real video quality.
 The longer-budget fits start afresh. Their validation histories differ before
 epoch 40 from the earlier fits, so differences between budget settings are not
 an isolated measure of extra training epochs.
+The further same-trajectory diagnostic retains each fit's selected checkpoint
+at or before epoch 40 and its final validation-selected checkpoint after an
+80-epoch maximum. Three seeds selected the same checkpoints at both stages.
+In seed 1704, the constant-audio fit selected epochs 38 and 48: its MAE changed
+from 0.085982 to 0.085382 on the same 240 targets. Aligned audio retained
+epoch 24. Constant audio was lower than aligned audio at both stages for all
+four seeds. The analysis remains retrospective on four opened actors, so it
+does not establish an actor-population effect.
