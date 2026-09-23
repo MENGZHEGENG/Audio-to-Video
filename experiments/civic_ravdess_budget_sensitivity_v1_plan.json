@@ -1,0 +1,30 @@
+{
+  "status": "exploratory_budget_sensitivity_frozen_before_execution",
+  "scope": "Post-confirmation training-budget diagnostic on the registered 2.0-second RAVDESS raster target; no new registered gate.",
+  "question": "Does the same-target constant-audio advantage persist when both fitted conditions receive up to 80 epochs under the original patience-six validation rule?",
+  "seeds": [
+    1701,
+    1702,
+    1703,
+    1704
+  ],
+  "conditions": [
+    "aligned_audio_fit",
+    "constant_zero_audio_fit"
+  ],
+  "maximum_epochs": 80,
+  "patience": 6,
+  "controlled_settings": "Start both conditions afresh for each seed with identical actor split, features, 64x64 target, AudioFiLM model, AdamW learning rate 0.0003, weight decay 0.0001, batch size 64, patience 6, and validation-MAE checkpoint selection. Only the maximum epoch budget changes from 40 to 80 relative to the earlier seed check. Score every selected pair on the same 240 opened confirmation targets.",
+  "analysis": "Report every seed and actor, selected epochs, and constant-minus-aligned MAE. Compare 40- and 80-epoch selected checkpoints descriptively, without treating seeds or repeated target rows as independent test populations.",
+  "base_plan_sha256": "213fac95ca1c916e4753e34ca517401c5c6524341507f72c4fdcfa7e6e0a0004",
+  "inputs_sha256": {
+    "spec_json": "d585ed74b14e3c70772c185700a467d8f0103f20fe1d5504679acab9c079b135",
+    "features_json": "24b3e65ae8b3e292d376c3ef2ef68eca24887b0e865122cec06060de9955deb8",
+    "feature_gate_json": "7e4aa680d0448f2645caa64906fb71adbedb3ef15217b355a39aa28c3a6cf897",
+    "confirmation_json": "7a3f7f3769e4418ea18e864ab5766547c7e92131448352a1c4270f7e1854e81b"
+  },
+  "expected_development_records": 960,
+  "expected_validation_records": 240,
+  "expected_confirmation_pairs": 240,
+  "target_timestamp_seconds": 2.0
+}

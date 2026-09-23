@@ -1,0 +1,79 @@
+{
+  "actor_groups": 4,
+  "excluded": [
+    "raw media",
+    "raw feature arrays",
+    "trained checkpoints",
+    "pair-level rows",
+    "execution metadata"
+  ],
+  "schema": "civic-ravdess-budget-receipt/v1",
+  "scope": "descriptive post-confirmation fresh-fit sensitivity on one fixed confirmation set; between-budget changes do not isolate additional epochs",
+  "seed_results": [
+    {
+      "aligned_audio_mae": 0.08989662470606466,
+      "constant_audio_mae": 0.08651986027446885,
+      "constant_minus_audio_mae": -0.0033767644315958025,
+      "maximum_epochs": 40,
+      "seed": 1701
+    },
+    {
+      "aligned_audio_mae": 0.08803205553752681,
+      "constant_audio_mae": 0.0859912163267533,
+      "constant_minus_audio_mae": -0.0020408392107735076,
+      "maximum_epochs": 80,
+      "seed": 1701
+    },
+    {
+      "aligned_audio_mae": 0.08979285334547361,
+      "constant_audio_mae": 0.08749167365022004,
+      "constant_minus_audio_mae": -0.002301179695253571,
+      "maximum_epochs": 40,
+      "seed": 1702
+    },
+    {
+      "aligned_audio_mae": 0.08873527113658687,
+      "constant_audio_mae": 0.08740146857065459,
+      "constant_minus_audio_mae": -0.001333802565932274,
+      "maximum_epochs": 80,
+      "seed": 1702
+    },
+    {
+      "aligned_audio_mae": 0.08983924818846087,
+      "constant_audio_mae": 0.08719303056908151,
+      "constant_minus_audio_mae": -0.0026462176193793614,
+      "maximum_epochs": 40,
+      "seed": 1703
+    },
+    {
+      "aligned_audio_mae": 0.0884087284716467,
+      "constant_audio_mae": 0.08770452745569249,
+      "constant_minus_audio_mae": -0.0007042010159542164,
+      "maximum_epochs": 80,
+      "seed": 1703
+    },
+    {
+      "aligned_audio_mae": 0.08853322137147188,
+      "constant_audio_mae": 0.08636963213793933,
+      "constant_minus_audio_mae": -0.002163589233532548,
+      "maximum_epochs": 40,
+      "seed": 1704
+    },
+    {
+      "aligned_audio_mae": 0.0887272076215595,
+      "constant_audio_mae": 0.0856546405547609,
+      "constant_minus_audio_mae": -0.0030725670667986075,
+      "maximum_epochs": 80,
+      "seed": 1704
+    }
+  ],
+  "source": "RAVDESS speech-video",
+  "source_score_sha256_max80": {
+    "1701": "1d639b0d1b0ebf737bb84b203bb3e9107be6eda687af2429f969a858ae9cfe28",
+    "1702": "7f3aa30766862b48c63cc74af3b21c143fc5d0ed686c1db398269190d72eb52b",
+    "1703": "6a191fb90cf3b01e33f4a99628cbdff1712dc83c77153fb7a53c87506957ec28",
+    "1704": "5b9d3ac575dd2eabc022c7421a3e07670ac8c0497183f8816aea4ae67057456e"
+  },
+  "target_timestamp_seconds": 2.0,
+  "targets_per_seed": 240
+}

@@ -3,7 +3,7 @@
 The `a2v/data`, `a2v/models`, `a2v/training`, and `a2v/evaluation` modules in
 this release contain the 64 × 64 raster preprocessing, AudioFiLM renderer,
 registered-control scoring, matched-stimulus controls, constant-audio fit, and
-matched-seed sensitivity code. The three JSON files in `experiments/` retain
+matched-seed and training-budget sensitivity code. The four JSON files in `experiments/` retain
 the executed exploratory analysis settings and input digests.
 
 ## Lightweight numeric check
@@ -12,11 +12,14 @@ With the base environment from the README, run:
 
 ```bash
 python -m a2v.reporting.ravdess_seed_receipt docs/ravdess_seed_receipt.json
+python -m a2v.reporting.ravdess_budget_receipt docs/ravdess_budget_receipt.json
 python -m pytest tests/test_ravdess_seed_receipt.py
+python -m pytest tests/test_ravdess_budget_receipt.py
 ```
 
-The first command recomputes the four seed-level constant-minus-audio MAE
-differences, their mean and range, and the number with a negative difference.
+The receipt commands recompute the four seed-level constant-minus-audio MAE
+differences for each maximum-epoch setting, their means and ranges, and the
+number with a negative difference.
 The receipt contains aggregate scores only. It does not contain the 240 scored
 pairs, model weights, video, audio, or feature arrays, so it cannot recompute
 the pair or actor bootstrap intervals.
@@ -41,6 +44,7 @@ and the target is the frame at 2.0 seconds. The executable entry points are:
 - `python -m a2v.evaluation.ravdess_raster_factorial --help`
 - `python -m a2v.evaluation.ravdess_constant_audio_comparator --help`
 - `python -m a2v.evaluation.ravdess_seed_sensitivity --help`
+- `python -m a2v.evaluation.ravdess_budget_sensitivity --help`
 
 The full scored run needs the hash-matching input JSON and feature arrays,
 which are not redistributed here. The original feature gate contains a
@@ -51,7 +55,10 @@ the executed one. The source and frozen settings support an authorized rerun
 once the corresponding inputs are supplied. The aggregate verification above
 is runnable without them.
 
-The constant-audio and seed sensitivity analyses were designed after the
+The constant-audio, seed, and longer-budget analyses were designed after the
 confirmation actors had been opened. They are descriptive same-target checks;
 they do not change the registered audio-replacement decision or establish
 performance across a population of actors or real video quality.
+The longer-budget fits start afresh. Their validation histories differ before
+epoch 40 from the earlier fits, so differences between budget settings are not
+an isolated measure of extra training epochs.
