@@ -1,0 +1,19 @@
+{
+  "status": "exploratory_seed_sensitivity_frozen_before_execution",
+  "scope": "Post-confirmation diagnostic on the registered 2.0-second RAVDESS raster endpoint; no new registered gate.",
+  "question": "Does the same-target constant-audio advantage persist across matched new training seeds?",
+  "seeds": [1702, 1703, 1704],
+  "conditions": ["aligned_audio_fit", "constant_zero_audio_fit"],
+  "controlled_settings": "Use the registered actor split, feature and target arrays, AudioFiLM architecture, AdamW learning rate 0.0003 and weight decay 0.0001, batch size 64, maximum 40 epochs, patience 6, and validation MAE selection. Reset the same seed before each condition's fitting. Score both selected checkpoints on each of the same 240 confirmation targets.",
+  "analysis": "Report every seed's paired zero-fit minus aligned-fit MAE and four actor means; do not pool seed-by-target rows as independent confirmation examples or turn the post-confirmation analysis into a registered benefit gate.",
+  "expected_development_records": 960,
+  "expected_validation_records": 240,
+  "expected_confirmation_pairs": 240,
+  "target_timestamp_seconds": 2.0,
+  "inputs_sha256": {
+    "spec_json": "d585ed74b14e3c70772c185700a467d8f0103f20fe1d5504679acab9c079b135",
+    "features_json": "24b3e65ae8b3e292d376c3ef2ef68eca24887b0e865122cec06060de9955deb8",
+    "feature_gate_json": "7e4aa680d0448f2645caa64906fb71adbedb3ef15217b355a39aa28c3a6cf897",
+    "confirmation_json": "7a3f7f3769e4418ea18e864ab5766547c7e92131448352a1c4270f7e1854e81b"
+  }
+}

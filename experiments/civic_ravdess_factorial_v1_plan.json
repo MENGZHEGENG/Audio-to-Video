@@ -1,0 +1,19 @@
+{
+  "status": "exploratory_controls_frozen_before_scoring",
+  "confirmation_protocol_sha256": "de9cc925c7742be3ebb6e9558e1e710b522f2ecb6eb4e16c03ed630212a559e5",
+  "expected_pairs": 240,
+  "target_timestamp_seconds": 2.0,
+  "conditions": [
+    "aligned",
+    "zero_audio",
+    "registered_actor_swap",
+    "matched_actor_swap",
+    "same_actor_statement_swap",
+    "identity_reference_swap"
+  ],
+  "pairing_rule": "For each frozen target pair, use the registered partner actor with identical modality, vocal channel, emotion, intensity, statement, and repetition. For the same-actor statement control, flip only the statement code 01/02.",
+  "analysis_rule": "Report each control minus aligned mean absolute error; retain all 240 paired rows, the 95 percent paired bootstrap interval, four actor-level means, and a four-actor cluster bootstrap interval. Do not infer population-level actor effects or select controls after scoring.",
+  "bootstrap_seed": 20270923,
+  "bootstrap_replicates": 10000,
+  "scope": "Exploratory follow-up after the registered 2.0-second replay; it cannot retrospectively change the registered all-controls decision rule."
+}

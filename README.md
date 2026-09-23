@@ -52,6 +52,8 @@ python -m a2v.data.dataset_metrics \
 - `a2v/reporting/civic_result_receipts.py` verifies privacy-safe aggregate result receipts.
 - `docs/civic_result_receipts.json` records the releasable mixed-condition summaries.
 - `docs/reproduction.md` describes the data contract and a repeatable local workflow.
+- `docs/ravdess_raster.md` explains the portable raster evaluator, frozen analysis settings, and the exact-input boundary.
+- `docs/ravdess_seed_receipt.json` supports a local aggregate check of four fitted-seed comparisons.
 
 ## Scope
 

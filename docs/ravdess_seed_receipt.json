@@ -1,0 +1,46 @@
+{
+  "actor_groups": 4,
+  "excluded": [
+    "raw media",
+    "raw feature arrays",
+    "trained checkpoints",
+    "pair-level rows",
+    "execution metadata"
+  ],
+  "schema": "civic-ravdess-seed-receipt/v1",
+  "scope": "descriptive post-confirmation same-target fitting sensitivity; no registered benefit decision",
+  "seed_results": [
+    {
+      "aligned_audio_mae": 0.08989662470606466,
+      "constant_audio_mae": 0.08651986027446885,
+      "constant_minus_audio_mae": -0.0033767644315958025,
+      "seed": 1701
+    },
+    {
+      "aligned_audio_mae": 0.08979285334547361,
+      "constant_audio_mae": 0.08749167365022004,
+      "constant_minus_audio_mae": -0.002301179695253571,
+      "seed": 1702
+    },
+    {
+      "aligned_audio_mae": 0.08983924818846087,
+      "constant_audio_mae": 0.08719303056908151,
+      "constant_minus_audio_mae": -0.0026462176193793614,
+      "seed": 1703
+    },
+    {
+      "aligned_audio_mae": 0.08853322137147188,
+      "constant_audio_mae": 0.08636963213793933,
+      "constant_minus_audio_mae": -0.002163589233532548,
+      "seed": 1704
+    }
+  ],
+  "source": "RAVDESS speech-video",
+  "source_score_sha256": {
+    "1702": "36cc5900052a6b60cf342c78361989a814bffb4684f5487d736b8938010434e5",
+    "1703": "7fc6ff7a27d9be47a16fbc0017575a8d8ddeb234f1cbc5ce2f353a06f424b8d3",
+    "1704": "68c9bebfeaf6495309eaffa2da98f3e700abf11518ee21fc8934ad16cf33c057"
+  },
+  "target_timestamp_seconds": 2.0,
+  "targets_per_seed": 240
+}

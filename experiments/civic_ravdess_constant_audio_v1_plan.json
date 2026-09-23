@@ -1,0 +1,22 @@
+{
+  "status": "exploratory_constant_audio_comparator_frozen_before_scoring",
+  "scope": "Post-confirmation diagnostic; confirmation actors were previously opened, so this is not a new sealed benefit gate.",
+  "question": "Does a renderer fitted with real audio outperform the same-capacity architecture fitted with a constant-zero audio stream on the same 2.0-second raster target?",
+  "comparison": "Original AudioFiLM renderer versus a separately fitted AudioFiLM renderer whose audio input is zero for every development, validation, and confirmation example.",
+  "controlled_settings": "Reuse the registered RAVDESS actor split, 64x64 target, seed 1701, architecture, AdamW settings, batch size 64, maximum 40 epochs, patience 6, validation-MAE checkpoint selection, and 240 confirmation targets.",
+  "primary_statistic": "Constant-audio-trained MAE minus original aligned-audio MAE on each of the 240 registered confirmation targets; report paired and four-actor bootstrap intervals without a significance or practical-benefit gate.",
+  "expected_development_records": 960,
+  "expected_validation_records": 240,
+  "expected_confirmation_pairs": 240,
+  "target_timestamp_seconds": 2.0,
+  "bootstrap_seed": 20270924,
+  "bootstrap_replicates": 10000,
+  "inputs_sha256": {
+    "spec_json": "d585ed74b14e3c70772c185700a467d8f0103f20fe1d5504679acab9c079b135",
+    "features_json": "24b3e65ae8b3e292d376c3ef2ef68eca24887b0e865122cec06060de9955deb8",
+    "feature_gate_json": "7e4aa680d0448f2645caa64906fb71adbedb3ef15217b355a39aa28c3a6cf897",
+    "confirmation_json": "7a3f7f3769e4418ea18e864ab5766547c7e92131448352a1c4270f7e1854e81b",
+    "original_checkpoint_pt": "03506c2b0c532d1a6b63febf7f9943d0f6a2404bb141b3ddb71ff50f7d435231",
+    "original_pair_report_json": "4ce70d5e9d91d2864cef0ec6e123a48c38d59bdd0dbf37f035dad1434f617db7"
+  }
+}
