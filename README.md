@@ -9,6 +9,9 @@ weights, generated videos, private study material, or site-specific launch
 files. The tiny example uses relative placeholder paths and is suitable for
 local contract checks only.
 
+The software is licensed under MIT; see `LICENSE`. Data and dependencies retain
+their own terms.
+
 ## Quick Start
 
 ```bash
